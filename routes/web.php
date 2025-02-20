@@ -17,4 +17,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->group(function(){
+    Route::prefix('doctor')->namespace('Doctor')->group(function(){
+        Route::get('/', 'IndexController')->name('admin.doctor.index');
+    });
+
+    Route::prefix('patient')->namespace('Patient')->group(function(){
+        Route::get('/', 'IndexController')->name('admin.patient.index');
+    });
+});
+
 require __DIR__.'/auth.php';
