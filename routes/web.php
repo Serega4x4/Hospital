@@ -19,7 +19,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware('role:superadmin')->prefix('admin')
+Route::middleware('role:superadmin',)->prefix('admin')
     ->namespace('App\Http\Controllers\Admin')
     ->group(function () {
         Route::prefix('doctor')
@@ -38,6 +38,8 @@ Route::middleware('role:superadmin')->prefix('admin')
             ->namespace('Administrator')
             ->group(function () {
                 Route::get('/', 'IndexController')->name('admin.administrator.index');
+                Route::get('/create', 'CreateController')->name('admin.administrator.create');
+                Route::post('/create', 'StoreController')->name('admin.administrator.store');
             });
     });
 

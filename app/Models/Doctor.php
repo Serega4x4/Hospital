@@ -11,7 +11,7 @@ class Doctor extends Model
 {
     use HasFactory, SoftDeletes, HasRoles;
 
-    protected $fillable = ['first_name', 'last_name', 'speciality', 'pesel', 'email', 'password'];
+    protected $fillable = ['speciality', 'user_id'];
 
     public function prescriptions()
     {

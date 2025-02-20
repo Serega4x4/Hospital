@@ -11,7 +11,7 @@ class Administrator extends Model
 {
     use HasFactory, SoftDeletes, HasRoles;
 
-    protected $fillable = ['first_name', 'last_name', 'pesel', 'email', 'password'];
+    protected $fillable = [];
 
     public function appointments()
     {
