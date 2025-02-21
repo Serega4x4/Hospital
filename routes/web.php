@@ -19,7 +19,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware('auth', 'role:superadmin|admin',)->prefix('admin')
+Route::middleware('auth', 'role:superadmin|admin')
+    ->prefix('admin')
     ->namespace('App\Http\Controllers\Admin')
     ->group(function () {
         Route::prefix('doctor')
@@ -40,6 +41,10 @@ Route::middleware('auth', 'role:superadmin|admin',)->prefix('admin')
                 Route::get('/', 'IndexController')->name('admin.administrator.index');
                 Route::get('/create', 'CreateController')->name('admin.administrator.create');
                 Route::post('/create', 'StoreController')->name('admin.administrator.store');
+                Route::get('/{administrator}', 'ShowController')->name('admin.administrator.show');
+                Route::get('/{administrator}/edit', 'EditController')->name('admin.administrator.edit');
+                Route::put('/{administrator}', 'UpdateController')->name('admin.administrator.update');
+                Route::delete('/{administrator}', 'DestroyController')->name('admin.administrator.destroy');
             });
     });
 
