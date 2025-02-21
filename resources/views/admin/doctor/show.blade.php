@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>{{ $doctor->first_name }} {{ $doctor->last_name }}</title>
 </head>
 
 <body>
@@ -13,20 +13,21 @@
     <a href="{{ route('dashboard') }}">Dashboard</a>
     <a href="{{ route('logout') }}">Logout</a>
     <div>
-        <h1>Administrator</h1>
+        <h1>doctor</h1>
     </div>
     <div>
         <tr>
-            <td>{{ $admin->first_name }}</td>
-            <td>{{ $admin->last_name }}</td>
+            <td>{{ $doctor->first_name }}</td>
+            <td>{{ $doctor->last_name }}</td>
+            <div>{{ $doctorSpec->speciality }}</div>
         </tr>
-        <div>{{ $admin->pesel }}</div>
+        
     </div>
     <br>
-    @if (Auth::user()->hasRole('superadmin'))
-        <a href="{{ route('admin.administrator.edit', $admin->id) }}">edit</a>
-        <a href="{{ route('admin.administrator.create') }}">Create</a>
-        <form action="{{ route('admin.administrator.destroy', $admin->id) }}" method="POST">
+    @if (Auth::user()->hasRole('superadmin|admin'))
+        <a href="{{ route('admin.doctor.edit', $doctor->id) }}">edit</a>
+        <a href="{{ route('admin.doctor.create') }}">Create</a>
+        <form action="{{ route('admin.doctor.destroy', $doctor->id) }}" method="POST">
             @csrf
             @method('DELETE')
             <button type="submit">DELETE</button>

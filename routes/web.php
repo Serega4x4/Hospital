@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('hospital');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -23,10 +23,17 @@ Route::middleware('auth', 'role:superadmin|admin')
     ->prefix('admin')
     ->namespace('App\Http\Controllers\Admin')
     ->group(function () {
+
         Route::prefix('doctor')
             ->namespace('Doctor')
             ->group(function () {
                 Route::get('/', 'IndexController')->name('admin.doctor.index');
+                Route::get('/create', 'CreateController')->name('admin.doctor.create');
+                Route::post('/create', 'StoreController')->name('admin.doctor.store');
+                Route::get('/{doctor}', 'ShowController')->name('admin.doctor.show');
+                Route::get('/{doctor}/edit', 'EditController')->name('admin.doctor.edit');
+                Route::put('/{doctor}', 'UpdateController')->name('admin.doctor.update');
+                Route::delete('/{doctor}', 'DestroyController')->name('admin.doctor.destroy');
             });
 
         Route::prefix('patient')

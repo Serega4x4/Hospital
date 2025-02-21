@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <a href="{{ route('hospital') }}">HOSPITAL</a>
     <a href="{{ route('dashboard') }}">Dashboard</a>
     <a href="{{ route('logout') }}">Logout</a>
     @foreach ($admins as $admin)
