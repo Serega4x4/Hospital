@@ -13,7 +13,6 @@
                 </div>
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
-                    <input class="btn btn-outline-primary" type="submit" value="Logout">
                 </form>
             </div>
         </div>

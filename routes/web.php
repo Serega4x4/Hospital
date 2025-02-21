@@ -19,7 +19,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware('role:superadmin',)->prefix('admin')
+Route::middleware('auth', 'role:superadmin|admin',)->prefix('admin')
     ->namespace('App\Http\Controllers\Admin')
     ->group(function () {
         Route::prefix('doctor')
