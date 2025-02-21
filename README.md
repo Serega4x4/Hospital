@@ -29,21 +29,20 @@ The application is developed on Laravel 11 and provides functionality for:
 - **Authentication**: Laravel Breeze  
 
 ## Installation
+1. Clone the repository:  
+git clone https://github.com/yourusername/hospital-management-system.git
+cd hospital-management-system  
 
-**1. **Clone the repository:
-```git clone https://github.com/yourusername/hospital-management-system.git
-cd hospital-management-system ```;  
+2. Install dependencies: 
+composer install
+npm install && npm run build  
 
-**2. **  Install dependencies:  
-```composer install
-npm install && npm run build```  
+3. Set up the environment: 
+cp .env.example .env  
 
-**3. **Set up the environment:  
-```cp .env.example .env
-# Configure DB_* parameters in .env```  
+4. Run migrations with seeds:  
+php artisan migrate --seed  
 
-**4. **Run migrations with seeds:  
-```php artisan migrate --seed```  
+5. Create the first superadmin:  
+php artisan db:seed --class=SuperadminSeeder
 
-**5. **Create the first superadmin:  
-```php artisan db:seed --class=SuperadminSeeder```  
