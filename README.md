@@ -30,20 +30,30 @@ The application is developed on Laravel 11 and provides functionality for:
 
 ## Installation
 1. Clone the repository:  
-```{bash} git clone https://github.com/yourusername/hospital-management-system.git  ```
+```bash
+git clone https://github.com/yourusername/hospital-management-system.git  
 cd hospital-management-system  
+```
 
 2. Install dependencies: 
-`composer install  `
-`npm install && npm run build  `
+```bash
+composer install  
+npm install && npm run build  
+```
 
 3. Set up the environment: 
-`cp .env.example .env  `
+```bash
+cp .env.example .env  
+```
 
 4. Run migrations with seeds:  
-`php artisan migrate --seed  `
+```bash
+php artisan migrate --seed  
+```
 
 5. Create the first superadmin:  
-`php artisan db:seed --class=DatabaseSeeder ` 
-`php artisan db:seed --class=SuperadminSeeder  `
+```bash
+php artisan db:seed --class=DatabaseSeeder
+php artisan db:seed --class=SuperadminSeeder  
+```
 
