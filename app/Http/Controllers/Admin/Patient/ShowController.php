@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Patient;
 
 use App\Http\Controllers\Controller;
-use App\Models\Doctor;
+use App\Models\Patient;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -21,12 +21,12 @@ class ShowController extends Controller
             return redirect()->route('dashboard');
         }
 
-        $doctor = User::find($id);
-        if (!$doctor) {
-            return redirect()->route('admin.doctor.index');
+        $patient = User::find($id);
+        if (!$patient) {
+            return redirect()->route('admin.patient.index');
         }
-        $doctorSpec = Doctor::find($doctor->doctor->id);
+        $patientMHA = Patient::find($patient->patient->id);
 
-        return view('admin.doctor.show', ['doctor' => $doctor, 'doctorSpec' => $doctorSpec]);
+        return view('admin.patient.show', ['patient' => $patient, 'patientMHA' => $patientMHA]);
     }
 }

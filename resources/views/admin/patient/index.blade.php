@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>patients</title>
+    <title>Patients</title>
 </head>
 
 <body>
@@ -17,9 +17,8 @@
             <tr>
                 <td>{{ $patient->first_name }}</td>
                 <td>{{ $patient->last_name }}</td>
+                <div>{{ $patient->pesel }}</div>
             </tr>
-            <div>{{ $patient->patient->address }}</div>
-            <div>{{ $patient->patient->medical_history }}</div>
             <a href="{{ route('admin.patient.show', $patient->id) }}">show</a>
             @if (Auth::user()->hasRole('superadmin|admin'))
                 <a href="{{ route('admin.patient.edit', $patient->id) }}">edit</a>
