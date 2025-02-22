@@ -21,10 +21,10 @@ class DestroyController extends Controller
 
         $admin = User::find($id);
         if (!$admin) {
-            return redirect()->route('admin.doctor.index');
+            return redirect()->route('admin.patient.index');
         }
         $admin->delete();
 
-        return redirect()->route('admin.doctor.index');
+        return redirect()->route('admin.patient.index');
     }
 }
