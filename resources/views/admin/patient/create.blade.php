@@ -25,15 +25,31 @@
 
             <div>
                 <label for="last_name">Last Name</label>
-                <input type="text" name="last_name" id="last_name" required>
+                <input type="text" name="last_name" id="last_name" value="{{ old('last_name') }}" required>
                 @error('last_name')
                     <div>{{ $message }}</div>
                 @enderror
             </div>
 
             <div>
+                <label for="birthday">Birthday</label>
+                <input type="date" name="birthday" id="birthday" value="{{ old('birthday') }}" required>
+                @error('birthday')
+                    <div>{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div>
+                <label for="pesel">PESEL</label>
+                <input type="text" name="pesel" id="pesel" value="{{ old('first_name') }}" required>
+                @error('pesel')
+                    <div>{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div>
                 <label for="address">Address</label>
-                <input type="text" name="address" id="address" required>
+                <input type="text" name="address" id="address" value="{{ old('address') }}" required>
                 @error('address')
                     <div>{{ $message }}</div>
                 @enderror
@@ -41,7 +57,7 @@
 
             <div>
                 <label for="medical_history">Medical history</label>
-                <input type="text" name="medical_history" id="medical_history" required>
+                <input type="text" name="medical_history" id="medical_history" value="{{ old('medical_history') }}" required>
                 @error('medical_history')
                     <div>{{ $message }}</div>
                 @enderror
@@ -49,7 +65,7 @@
 
             <div>
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" required>
+                <input type="email" name="email" id="email" value="{{ old('email') }}" required>
                 @error('email')
                     <div>{{ $message }}</div>
                 @enderror
@@ -57,16 +73,8 @@
 
             <div>
                 <label for="password">Password</label>
-                <input type="password" name="password" id="password" required>
+                <input type="password" name="password" id="password" value="{{ old('password') }}" required>
                 @error('password')
-                    <div>{{ $message }}</div>
-                @enderror
-            </div>
-
-            <div>
-                <label for="pesel">PESEL</label>
-                <input type="text" name="pesel" id="pesel" required>
-                @error('pesel')
                     <div>{{ $message }}</div>
                 @enderror
             </div>

@@ -16,6 +16,7 @@ class StoreRequest extends FormRequest
         return [
             'first_name' => ['required', 'string', 'max:50'],
             'last_name' => ['required', 'string', 'max:50'],
+            'birthday' => ['required', 'date', 'before:today'],
             'address' => ['required', 'string'],
             'medical_history' => ['required', 'string'],
             'pesel' => ['required', 'string', 'size:11', 'regex:/^\d{11}$/', 'unique:users,pesel'],

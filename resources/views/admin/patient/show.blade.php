@@ -21,7 +21,8 @@
         <tr>
             <td>{{ $patient->first_name }}</td>
             <td>{{ $patient->last_name }}</td>
-            <div>{{ $patient->pesel }}</div>
+            <div>{{ $date }}</div>            
+            <div>PESEL - {{ $patient->pesel }}</div>
             <div>{{ $patientMHA->address }}</div>
             <div>{{ $patientMHA->medical_history }}</div>
         </tr>

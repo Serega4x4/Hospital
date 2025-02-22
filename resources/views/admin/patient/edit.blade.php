@@ -33,18 +33,27 @@
                     <div>{{ $message }}</div>
                 @enderror
             </div>
-            
-                        <div>
-                            <label for="address">Address</label>
-                            <input type="text" name="address" id="address" value="{{ $patientHMA->address }}" required>
-                            @error('first_name')
-                                <div>{{ $message }}</div>
-                            @enderror
-                        </div>
+
+            <div>
+                <label for="birthday">Birthday</label>
+                <input type="date" name="birthday" id="birthday" value="{{ $patientHMA->birthday }}" required>
+                @error('birthday')
+                    <div>{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div>
+                <label for="address">Address</label>
+                <input type="text" name="address" id="address" value="{{ $patientHMA->address }}" required>
+                @error('first_name')
+                    <div>{{ $message }}</div>
+                @enderror
+            </div>
 
             <div>
                 <label for="medical_history">Medical History</label>
-                <input type="text" name="medical_history" id="medical_history" value="{{ $patientHMA->medical_history }}" required>
+                <input type="text" name="medical_history" id="medical_history"
+                    value="{{ $patientHMA->medical_history }}" required>
                 @error('medical_history')
                     <div>{{ $message }}</div>
                 @enderror

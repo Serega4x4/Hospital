@@ -36,6 +36,7 @@ class UpdateController extends Controller
         $patient->update([
             'address' => $request->address,
             'medical_history' => $request->medical_history,
+            'birthday' => $request->birthday,
     ]);
 
         return redirect()->route('admin.patient.index')->with('success', 'Patient created successfully.');
