@@ -2,8 +2,8 @@
 namespace App\Http\Controllers\Admin\Patient;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Doctor\UpdateRequest;
-use App\Models\Doctor;
+use App\Http\Requests\Admin\Patient\UpdateRequest;
+use App\Models\Patient;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +22,7 @@ class UpdateController extends Controller
 
         $user = User::find($id);
         if (!$user) {
-            return redirect()->route('admin.doctor.index')->with('error', 'User not found.');
+            return redirect()->route('admin.patient.index')->with('error', 'User not found.');
         }
 
         $validatedData = $request->validated();
@@ -32,9 +32,12 @@ class UpdateController extends Controller
 
         $user->update($validatedData);
 
-        $doctor = Doctor::where('user_id', $user->id)->first();
-        $doctor->update(['speciality' => $request->speciality,]);
+        $patient = Patient::where('user_id', $user->id)->first();
+        $patient->update([
+            'address' => $request->address,
+            'medical_history' => $request->medical_history,
+    ]);
 
-        return redirect()->route('admin.doctor.index')->with('success', 'Doctor created successfully.');
+        return redirect()->route('admin.patient.index')->with('success', 'Patient created successfully.');
     }
 }

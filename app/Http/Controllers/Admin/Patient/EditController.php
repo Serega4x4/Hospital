@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Patient;
 
 use App\Http\Controllers\Controller;
-use App\Models\Doctor;
+use App\Models\Patient;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -21,13 +21,13 @@ class EditController extends Controller
             return redirect()->route('dashboard');
         }
 
-        $doctor = User::find($id);
-        if (!$doctor) {
-            return redirect()->route('admin.doctor.index');
+        $patient = User::find($id);
+        if (!$patient) {
+            return redirect()->route('admin.patient.index');
         }
 
-        $doctorSpec = Doctor::find($doctor->doctor->id);
+        $patientHMA = patient::find($patient->patient->id);
 
-        return view('admin.doctor.edit', ['doctor' => $doctor, 'doctorSpec' => $doctorSpec]);
+        return view('admin.patient.edit', ['patient' => $patient, 'patientHMA' => $patientHMA]);
     }
 }
