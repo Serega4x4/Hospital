@@ -25,6 +25,7 @@
 
     <a href="{{ route('admin.administrator.index') }}">Administrators</a>
     <a href="{{ route('admin.doctor.index') }}">Doctors</a>
+    <a href="{{ route('admin.patient.index') }}">Patient</a>
 
     @else
     <a href="{{ route('login') }}">Login</a>

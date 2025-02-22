@@ -40,6 +40,12 @@ Route::middleware('auth', 'role:superadmin|admin')
             ->namespace('Patient')
             ->group(function () {
                 Route::get('/', 'IndexController')->name('admin.patient.index');
+                Route::get('/create', 'CreateController')->name('admin.patient.create');
+                Route::post('/create', 'StoreController')->name('admin.patient.store');
+                Route::get('/{patient}', 'ShowController')->name('admin.patient.show');
+                Route::get('/{patient}/edit', 'EditController')->name('admin.patient.edit');
+                Route::put('/{patient}', 'UpdateController')->name('admin.patient.update');
+                Route::delete('/{patient}', 'DestroyController')->name('admin.patient.destroy');
             });
 
         Route::prefix('administrator')

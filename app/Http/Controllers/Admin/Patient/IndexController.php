@@ -3,12 +3,17 @@
 namespace App\Http\Controllers\Admin\Patient;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\View\View;
 
 class IndexController extends Controller
 {
-    public function __invoke()
+    public function __invoke(): View
     {
-        return 'wellcome to hall';
+        $patients = User::role('patient')
+            ->with('patient')
+            ->get();
+
+        return view('admin.patient.index', ['patients' => $patients]);
     }
 }
