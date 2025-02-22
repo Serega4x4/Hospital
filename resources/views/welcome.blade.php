@@ -9,27 +9,20 @@
 </head>
 
 <body>
-    
-    @if (Auth::user())
-    
-    <form method="POST" action="{{ route('logout') }}">
-        @csrf
 
-        <a href="route('logout')"
-                onclick="event.preventDefault();
-                            this.closest('form').submit();">
-            {{ __('Log Out') }}
-    </a>
-    </form>
+    @if (Auth::check())
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit">Log Out</button>
+        </form>
 
-
-    <a href="{{ route('admin.administrator.index') }}">Administrators</a>
-    <a href="{{ route('admin.doctor.index') }}">Doctors</a>
-    <a href="{{ route('admin.patient.index') }}">Patient</a>
-
+        <a href="{{ route('admin.administrator.index') }}">Administrators</a>
+        <a href="{{ route('admin.doctor.index') }}">Doctors</a>
+        <a href="{{ route('admin.patient.index') }}">Patient</a>
     @else
-    <a href="{{ route('login') }}">Login</a>
+        <a href="{{ route('login') }}">Login</a>
     @endif
+
     <h1>Hospital</h1>
 
 </body>
