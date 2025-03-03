@@ -1,17 +1,5 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Patients</title>
-</head>
-
-<body>
-    <a href="{{ route('hospital') }}">HOSPITAL</a>
-    <a href="{{ route('dashboard') }}">Dashboard</a>
-    <a href="{{ route('logout') }}">Logout</a>
+@extends('layouts.main')
+@section('content')
     @foreach ($patients as $patient)
         <div>
             <tr>
@@ -34,6 +22,4 @@
     @if (Auth::user()->hasRole('superadmin|admin'))
         <a href="{{ route('admin.patient.create') }}">Create</a>
     @endif
-</body>
-
-</html>
+@endsection('content')

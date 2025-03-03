@@ -1,22 +1,5 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>{{ $patient->first_name }} {{ $patient->last_name }}</title>
-</head>
-
-<body>
-    <a href="{{ route('hospital') }}">HOSPITAL</a>
-    <a href="{{ route('dashboard') }}">Dashboard</a>
-    <a href="{{ route('logout') }}">Logout</a>
-    
-    <div>
-        <h1>Patient</h1>
-    </div>
-
+@extends('layouts.main')
+@section('content')
     <div>
         <tr>
             <td>{{ $patient->first_name }}</td>
@@ -38,7 +21,4 @@
             <button type="submit">DELETE</button>
         </form>
     @endif
-
-</body>
-
-</html>
+@endsection('content')

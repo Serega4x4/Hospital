@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Laravel</title>
-</head>
-
-<body>
-    <a href="{{ route('hospital') }}">HOSPITAL</a>
+@extends('layouts.main')
+@section('content')
     <div>
         <h1>Create Administrator</h1>
         <form action="{{ route('admin.administrator.store') }}" method="POST">
@@ -41,6 +31,4 @@
             <button type="submit">Create Administrator</button>
         </form>
     </div>
-</body>
-
-</html>
+@endsection('content')
