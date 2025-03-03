@@ -16,9 +16,11 @@
             <button type="submit">Log Out</button>
         </form>
 
+        @role('admin|superadmin')
         <a href="{{ route('admin.administrator.index') }}">Administrators</a>
         <a href="{{ route('admin.doctor.index') }}">Doctors</a>
         <a href="{{ route('admin.patient.index') }}">Patient</a>
+        @endrole
     @else
         <a href="{{ route('login') }}">Login</a>
     @endif
