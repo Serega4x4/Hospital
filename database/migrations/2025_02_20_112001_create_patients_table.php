@@ -9,6 +9,7 @@ return new class extends Migration {
     {
         Schema::create('patients', function (Blueprint $table) {
             $table->id();
+            $table->date('birthday')->nullable();
             $table->string('address');
             $table->text('medical_history')->nullable();
             $table->timestamps();

@@ -19,7 +19,7 @@ return new class extends Migration {
             $table->softDeletes();
 
             $table->foreignId('patient_id')->constrained()->onDelete('cascade');
-            $table->foreignId('doctors_id')->constrained()->onDelete('cascade');
+            $table->foreignId('doctor_id')->constrained()->onDelete('cascade');
         });
     }
 

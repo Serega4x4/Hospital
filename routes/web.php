@@ -64,7 +64,7 @@ Route::middleware('auth', 'role:superadmin|admin')
 Route::middleware('auth')->prefix('booking')->namespace('App\Http\Controllers\Booking')->group(function(){
     Route::get('/', 'IndexController')->name('booking.index');
     Route::get('/{doctorId}', 'CreateController')->name('booking.create');
-    // Route::post('/{doctorId}', 'StoreController')->name('booking.store');
+    Route::post('/{doctorId}', 'StoreController')->name('booking.store');
 });
 
 require __DIR__ . '/auth.php';
