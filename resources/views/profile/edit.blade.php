@@ -1,29 +1,49 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Profile') }}
-        </h2>
-    </x-slot>
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+</head>
+<body>
+    @if (Auth::check())
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit">Log Out</button>
+        </form>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl">
+        @role('admin|superadmin')
+        <a href="{{ route('admin.administrator.index') }}">Administrators</a>
+        <a href="{{ route('admin.doctor.index') }}">Doctors</a>
+        <a href="{{ route('admin.patient.index') }}">Patient</a>
+        @endrole
+    @else
+        <a href="{{ route('login') }}">Login</a>
+    @endif
+    <div>
+        <div>
+            <div>
+                <div>
                     @include('profile.partials.update-profile-information-form')
                 </div>
             </div>
+        </div>
 
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl">
+        <div>
+            <div>
+                <div>
                     @include('profile.partials.update-password-form')
                 </div>
             </div>
+        </div>
 
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl">
+        <div>
+            <div>
+                <div>
                     @include('profile.partials.delete-user-form')
                 </div>
             </div>
         </div>
     </div>
-</x-app-layout>
+</body>
+</html>
