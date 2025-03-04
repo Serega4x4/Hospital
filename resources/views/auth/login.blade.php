@@ -37,7 +37,7 @@
         </div>
 
         <div>
-            <button type="submit">Log in</button>
+            <button type="submit" class="btn btn-sm btn-outline-secondary">Log in</button>
         </div>
     </form>
 @endsection('content')
