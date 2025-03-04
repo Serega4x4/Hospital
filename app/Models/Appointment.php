@@ -11,6 +11,7 @@ class Appointment extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = ['patient_id', 'doctor_id', 'appointment_date', 'symptoms', 'notes', 'status'];
+    protected $casts = ['appointment_date' => 'datetime'];
 
     public function patient()
     {

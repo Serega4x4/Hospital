@@ -65,7 +65,7 @@ Route::middleware('auth')->prefix('booking')->namespace('App\Http\Controllers\Bo
     Route::get('/', 'IndexController')->name('booking.index');
     Route::get('/{doctorId}', 'CreateController')->name('booking.create');
     Route::post('/{doctorId}', 'StoreController')->name('booking.store');
-    Route::post('/{appointment}', 'StoreController')->name('booking.show');
+    Route::get('/appointments/{appointment}', 'ShowController')->name('booking.show');
 });
 
 require __DIR__ . '/auth.php';
