@@ -12,8 +12,9 @@ class DatabaseSeeder extends Seeder
     {
         $roles = ['superadmin', 'admin', 'doctor', 'patient'];
 
-        foreach ($roles as $role){
+        foreach ($roles as $role) {
             Role::create(['name' => $role]);
         }
+        $this->call(TimeSlotSeeder::class);
     }
 }
