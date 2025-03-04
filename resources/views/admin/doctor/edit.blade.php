@@ -33,7 +33,7 @@
                 <label for="password">Password (leave blank to keep current)</label>
                 <input type="password" name="password" id="password">
             </div>
-            <button type="submit">Update Doctor</button>
+            <button type="submit" class="btn btn-sm btn-outline-secondary">Update Doctor</button>
         </form>
     </div>
 </body>
