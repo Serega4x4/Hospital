@@ -15,8 +15,8 @@
     <form action="{{ route('booking.store', $doctor->id) }}" method="POST">
         @csrf
         <div>
-            <label for="time_slot_id">Chose your time:</label>
-            <select name="time_slot_id" id="time_slot_id" required>
+            <label for="time_slot_id" >Chose your time:</label>
+            <select name="time_slot_id" id="time_slot_id" class="btn btn-sm btn-outline-secondary" required>
                 @foreach($timeSlots as $timeSlot)
                     <option value="{{ $timeSlot->id }}">
                         {{ $timeSlot->start_time->format('Y-m-d H:i') }} - {{ $timeSlot->end_time->format('H:i') }}

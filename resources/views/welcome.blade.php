@@ -1,5 +1,4 @@
 @extends('layouts.main')
 @section('content')
-<h1>Hospital</h1>
-<a href="{{ route('booking.index') }}">Chose doctor</a>
+<a href="{{ route('booking.index') }}" class="btn btn-sm btn-outline-secondary">Chose doctor</a>
 @endsection('contetn')
