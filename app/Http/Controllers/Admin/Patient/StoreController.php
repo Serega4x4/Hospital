@@ -34,7 +34,6 @@ class StoreController extends Controller
 
         $patient = Patient::create([
             'address' => $request->address,
-            'medical_history' => $request->medical_history,
             'birthday' => $request->birthday,
             'user_id' => $user->id,
         ]);

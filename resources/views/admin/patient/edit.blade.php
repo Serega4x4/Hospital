@@ -1,7 +1,6 @@
 @extends('layouts.main')
 @section('content')
     <div>
-        <h1>Edit patient</h1>
         <form action="{{ route('admin.patient.update', $patient->id) }}" method="POST">
             @csrf
             @method('PUT')
@@ -24,7 +23,7 @@
 
             <div>
                 <label for="birthday">Birthday</label>
-                <input type="date" name="birthday" id="birthday" value="{{ $patientHMA->birthday }}" required>
+                <input type="date" name="birthday" id="birthday" value="{{ $patientHMA->birthday }}" class="btn btn-sm btn-outline-secondary" required>
                 @error('birthday')
                     <div>{{ $message }}</div>
                 @enderror
@@ -34,15 +33,6 @@
                 <label for="address">Address</label>
                 <input type="text" name="address" id="address" value="{{ $patientHMA->address }}" required>
                 @error('first_name')
-                    <div>{{ $message }}</div>
-                @enderror
-            </div>
-
-            <div>
-                <label for="medical_history">Medical History</label>
-                <input type="text" name="medical_history" id="medical_history"
-                    value="{{ $patientHMA->medical_history }}" required>
-                @error('medical_history')
                     <div>{{ $message }}</div>
                 @enderror
             </div>
@@ -71,7 +61,7 @@
                 @enderror
             </div>
 
-            <button type="submit">Update patient</button>
+            <button type="submit" class="btn btn-sm btn-outline-primary">Update patient</button>
 
         </form>
     </div>

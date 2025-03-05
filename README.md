@@ -55,6 +55,5 @@ php artisan migrate --seed
 ```bash
 php artisan db:seed --class=DatabaseSeeder
 php artisan db:seed --class=SuperadminSeeder  
-php artisan db:seed --class=TimeSlotSeeder
 ```
 

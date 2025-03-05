@@ -1,8 +1,6 @@
 @extends('layouts.main')
 @section('content')
-    <a href="{{ route('hospital') }}">HOSPITAL</a>
     <div>
-        <h1>Create Patient</h1>
         <form action="{{ route('admin.patient.store') }}" method="POST">
             @csrf
 
@@ -24,7 +22,7 @@
 
             <div>
                 <label for="birthday">Birthday</label>
-                <input type="date" name="birthday" id="birthday" value="{{ old('birthday') }}" required>
+                <input type="date" name="birthday" id="birthday" value="{{ old('birthday') }}" class="btn btn-sm btn-outline-secondary" required>
                 @error('birthday')
                     <div>{{ $message }}</div>
                 @enderror
@@ -47,14 +45,6 @@
             </div>
 
             <div>
-                <label for="medical_history">Medical history</label>
-                <input type="text" name="medical_history" id="medical_history" value="{{ old('medical_history') }}" required>
-                @error('medical_history')
-                    <div>{{ $message }}</div>
-                @enderror
-            </div>
-
-            <div>
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email" value="{{ old('email') }}" required>
                 @error('email')
@@ -70,7 +60,7 @@
                 @enderror
             </div>
 
-            <button type="submit">Create Patient</button>
+            <button type="submit" class="btn btn-sm btn-outline-primary">Create Patient</button>
 
         </form>
     </div>

@@ -12,12 +12,12 @@
     </div>
     <br>
     @if (Auth::user()->hasRole('superadmin'))
-        <a href="{{ route('admin.administrator.edit', $admin->id) }}">edit</a>
-        <a href="{{ route('admin.administrator.create') }}">Create</a>
+        <a href="{{ route('admin.administrator.edit', $admin->id) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+        <a href="{{ route('admin.administrator.create') }}" class="btn btn-sm btn-outline-secondary">Create</a>
         <form action="{{ route('admin.administrator.destroy', $admin->id) }}" method="POST">
             @csrf
             @method('DELETE')
-            <button type="submit">DELETE</button>
+            <button type="submit" class="btn btn-sm btn-outline-danger">DELETE</button>
         </form>
     @endif
 @endsection('content')

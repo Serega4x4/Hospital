@@ -11,7 +11,6 @@ return new class extends Migration {
             $table->id();
             $table->date('birthday')->nullable();
             $table->string('address');
-            $table->text('medical_history')->nullable();
             $table->timestamps();
 
             $table->softDeletes();

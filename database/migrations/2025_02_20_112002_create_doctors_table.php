@@ -10,6 +10,7 @@ return new class extends Migration {
         Schema::create('doctors', function (Blueprint $table) {
             $table->id();
             $table->string('speciality');
+            $table->integer('appointment_duration')->default(15);
             $table->timestamps();
 
             $table->softDeletes();

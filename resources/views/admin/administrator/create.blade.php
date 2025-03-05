@@ -28,7 +28,7 @@
                 <label for="address">Address</label>
                 <input type="text" name="address" id="address">
             </div>
-            <button type="submit">Create Administrator</button>
+            <button type="submit" class="btn btn-sm btn-outline-primary">Create Administrator</button>
         </form>
     </div>
 @endsection('content')

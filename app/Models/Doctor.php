@@ -11,7 +11,7 @@ class Doctor extends Model
 {
     use HasFactory, SoftDeletes, HasRoles;
 
-    protected $fillable = ['speciality', 'user_id'];
+    protected $fillable = ['speciality', 'appointment_duration', 'user_id'];
 
     public function prescriptions()
     {
@@ -28,8 +28,8 @@ class Doctor extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function timeSlots()
-{
-    return $this->hasMany(TimeSlot::class);
-}
+    public function openingHours()
+    {
+        return $this->hasOne(OpeningHour::class);
+    }
 }
