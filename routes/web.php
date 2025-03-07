@@ -61,11 +61,11 @@ Route::middleware('auth', 'role:superadmin|admin')
             });
     });
 
-Route::middleware('auth')->prefix('booking')->namespace('App\Http\Controllers\Booking')->group(function(){
-    Route::get('/', 'IndexController')->name('booking.index');
-    Route::get('/{doctorId}', 'CreateController')->name('booking.create');
-    Route::post('/{doctorId}', 'StoreController')->name('booking.store');
-    Route::get('/appointments/{appointment}', 'ShowController')->name('booking.show');
-});
+// Route::middleware('auth')->prefix('booking')->namespace('App\Http\Controllers\Booking')->group(function(){
+//     Route::get('/', 'IndexController')->name('booking.index');
+//     Route::get('/{doctorId}', 'CreateController')->name('booking.create');
+//     Route::post('/{doctorId}', 'StoreController')->name('booking.store');
+//     Route::get('/appointments/{appointment}', 'ShowController')->name('booking.show');
+// });
 
 require __DIR__ . '/auth.php';
