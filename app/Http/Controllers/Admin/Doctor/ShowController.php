@@ -11,12 +11,12 @@ use Illuminate\View\View;
 
 class ShowController extends Controller
 {
-    public function __invoke($id): View | RedirectResponse
+    public function __invoke($id): View|RedirectResponse
     {
         if (!Auth::check()) {
             return redirect()->route('login');
         }
-        
+
         if (!auth()->user()->hasRole('superadmin|admin')) {
             return redirect()->route('dashboard');
         }
@@ -26,7 +26,12 @@ class ShowController extends Controller
             return redirect()->route('admin.doctor.index');
         }
         $doctorSpec = Doctor::find($doctor->doctor->id);
+        $openingHour = $doctorSpec->openingHours;
 
-        return view('admin.doctor.show', ['doctor' => $doctor, 'doctorSpec' => $doctorSpec]);
+        return view('admin.doctor.show', [
+            'doctor' => $doctor,
+            'doctorSpec' => $doctorSpec,
+            'openingHour' => $openingHour,
+        ]);
     }
 }

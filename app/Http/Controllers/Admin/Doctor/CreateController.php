@@ -19,6 +19,20 @@ class CreateController extends Controller
             return redirect()->route('dashboard');
         }
 
-        return view('admin.doctor.create');
+        $days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+        $defaultHours = [
+            'monday' => ['08:00-12:00', '13:00-17:00'],
+            'tuesday' => ['08:00-12:00', '13:00-17:00'],
+            'wednesday' => ['08:00-12:00', '13:00-17:00'],
+            'thursday' => ['08:00-12:00', '13:00-17:00'],
+            'friday' => ['08:00-12:00', '13:00-17:00'],
+            'saturday' => [],
+            'sunday' => [],
+        ];
+
+        return view('admin.doctor.create', [
+            'defaultHours' => $defaultHours,
+            'days' => $days,
+        ]);
     }
 }

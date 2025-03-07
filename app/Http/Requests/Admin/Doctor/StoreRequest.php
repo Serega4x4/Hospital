@@ -20,6 +20,9 @@ class StoreRequest extends FormRequest
             'pesel' => ['required', 'string', 'size:11', 'regex:/^\d{11}$/', 'unique:users,pesel'],
             'email' => ['required', 'string', 'unique:users,email'],
             'password' => ['required', 'string', 'min:8'],
+            'appointment_duration' => ['nullable', 'integer', 'min:5', 'max:60'],
+            'hours' => ['nullable', 'array'],
+            'hours.*.*' => ['nullable', 'regex:/^\d{2}:\d{2}-\d{2}:\d{2}$/'],
         ];
     }
 }

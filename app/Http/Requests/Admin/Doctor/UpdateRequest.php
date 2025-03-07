@@ -22,6 +22,9 @@ class UpdateRequest extends FormRequest
             'pesel' => ['required', 'string', 'size:11', 'regex:/^\d{11}$/', Rule::unique('users', 'pesel')->ignore($userId)],
             'email' => ['required', 'string', Rule::unique('users', 'email')->ignore($userId)],
             'password' => ['nullable', 'string', 'min:8'],
+            'appointment_duration' => ['nullable', 'integer', 'min:5', 'max:60'],
+            'hours' => ['nullable', 'array'],
+            'hours.*.*' => ['nullable', 'regex:/^\d{2}:\d{2}-\d{2}:\d{2}$/'],
         ];
     }
 }

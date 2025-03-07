@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\OpeningHours\OpeningHours;
 
 class OpeningHour extends Model
 {
@@ -19,5 +20,10 @@ class OpeningHour extends Model
     public function doctor()
     {
         return $this->belongsTo(Doctor::class);
+    }
+
+    public function getOpeningHoursAttribute()
+    {
+        return OpeningHours::create($this->hours);
     }
 }

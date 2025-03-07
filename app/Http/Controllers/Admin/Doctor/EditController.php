@@ -27,7 +27,14 @@ class EditController extends Controller
         }
 
         $doctorSpec = Doctor::find($doctor->doctor->id);
+        $openingHour = $doctorSpec->openingHours;
+        $days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 
-        return view('admin.doctor.edit', ['doctor' => $doctor, 'doctorSpec' => $doctorSpec]);
+        return view('admin.doctor.edit', [
+            'doctor' => $doctor,
+            'doctorSpec' => $doctorSpec,
+            'openingHour' => $openingHour,
+            'days' => $days,
+        ]);
     }
 }
