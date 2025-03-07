@@ -30,9 +30,16 @@ class UpdateController extends Controller
         if (isset($validatedData['password'])) {
             $validatedData['password'] = bcrypt($validatedData['password']);
         }
-        dd($validatedData);
 
-        $user->update($validatedData);
+        $userData = array_filter([
+            'first_name' => $validatedData['first_name'],
+            'last_name' => $validatedData['last_name'],
+            'pesel' => $validatedData['pesel'],
+            'email' => $validatedData['email'],
+            'password' => isset($validatedData['password']) ? bcrypt($validatedData['password']) : null,
+        ], fn($value) => !is_null($value));
+
+        $user->update($userData);
 
         $doctor = Doctor::where('user_id', $user->id)->first();
         $doctor->update([

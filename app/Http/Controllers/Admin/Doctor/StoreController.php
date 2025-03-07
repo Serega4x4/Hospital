@@ -15,13 +15,10 @@ class StoreController extends Controller
     public function __invoke(StoreRequest $request): RedirectResponse
     {
         $validatedData = $request->validated();
-        // dd($validatedData);
 
         if (!Auth::check()) {
             return redirect()->route('login');
         }
-
-
 
         if (!auth()->user()->hasRole('superadmin|admin')) {
             return redirect()->route('dashboard');

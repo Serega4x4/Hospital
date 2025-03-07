@@ -17,7 +17,7 @@ class EditController extends Controller
             return redirect()->route('login');
         }
 
-        if (!auth()->user()->hasRole('superadmin')) {
+        if (!auth()->user()->hasRole('superadmin|admin')) {
             return redirect()->route('dashboard');
         }
 
