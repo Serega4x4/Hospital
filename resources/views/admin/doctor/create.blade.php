@@ -32,6 +32,9 @@
             <div>
                 <label for="appointment_duration">Appointment Duration (minutes)</label>
                 <input type="number" name="appointment_duration" value="{{ old('appointment_duration', 15) }}" min="5" max="60">
+                @error('appointment_duration')
+                    <div>{{ $message }}</div>
+                @enderror
             </div>
         
             <h3>Opening Hours</h3>
@@ -40,6 +43,9 @@
                     <label>{{ ucfirst($day) }}</label>
                     <input type="text" name="hours[{{ $day }}][]" value="{{ old("hours.$day.0", $defaultHours[$day][0] ?? '') }}" placeholder="e.g. 08:00-12:00">
                     <input type="text" name="hours[{{ $day }}][]" value="{{ old("hours.$day.1", $defaultHours[$day][1] ?? '') }}" placeholder="e.g. 13:00-17:00">
+                    @error('hours')
+                    <div>{{ $message }}</div>
+                @enderror
                 </div>
             @endforeach
 
