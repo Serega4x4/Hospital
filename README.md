@@ -57,3 +57,6 @@ php artisan db:seed --class=DatabaseSeeder
 php artisan db:seed --class=SuperadminSeeder  
 ```
 
+# email = admin@mail.com 
+# password = password
+

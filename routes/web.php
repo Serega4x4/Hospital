@@ -61,8 +61,4 @@ Route::middleware('auth', 'role:superadmin|admin')
             });
     });
 
-Route::middleware('auth')->group(function () {
-    Route::post('/appointments', [App\Http\Controllers\AppointmentController::class, 'store'])->name('appointments.store');
-});
-
 require __DIR__ . '/auth.php';
