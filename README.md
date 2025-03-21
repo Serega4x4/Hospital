@@ -31,8 +31,8 @@ The application is developed on Laravel 11 and provides functionality for:
 ## Installation
 1. Clone the repository:  
 ```bash
-git clone https://github.com/yourusername/hospital-management-system.git  
-cd hospital-management-system  
+git clone https://github.com/yourusername/hospital.git  
+cd hospital  
 ```
 
 2. Install dependencies: 
