@@ -32,7 +32,7 @@ The application is developed on Laravel 11 and provides functionality for:
 ## Installation
 1. Clone the repository:  
 ```bash
-git clone https://github.com/yourusername/hospital.git    
+git clone https://github.com/Serega4x4/hospital.git    
 ```
 
 2. Change directory: 
