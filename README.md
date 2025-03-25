@@ -58,9 +58,9 @@ http://localhost/
 ```  
 7. E-mail of superadmin:
 ```bash
-admin@mail.com  
+admin@mail.com
 ```
 8. Password of superadmin:  
 ```bash
-password  
+password
 ```
