@@ -45,18 +45,19 @@ npm install && npm run build
 ```bash
 cp .env.example .env  
 ```
-
-4. Run migrations with seeds:  
+4. Set up docker:  
 ```bash
-php artisan migrate --seed  
+docker-compose up -d --build  
 ```
-
-5. Create the first superadmin:  
+5. Generate key:  
 ```bash
-php artisan db:seed --class=DatabaseSeeder
-php artisan db:seed --class=SuperadminSeeder  
-```
+docker-compose exec app php artisan key:generate  
+```  
+6. Visit in your browser:  
+```bash
+http://localhost/  
+```  
 
-# email = admin@mail.com 
-# password = password
+#### email = admin@mail.com 
+#### password = password
 

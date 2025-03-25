@@ -44,7 +44,7 @@
             </div>
             <div class="navbar-nav">
                 <div class="nav-item text-nowrap">
-                    <a class="nav-link px-3" href="{{ route('login') }}">Or register</a>
+                    <a class="nav-link px-3" href="{{ route('register') }}">Or register</a>
                 </div>
             </div>
         @endif
