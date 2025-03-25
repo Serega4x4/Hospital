@@ -27,18 +27,17 @@ The application is developed on Laravel 11 and provides functionality for:
 - **Security**: RBAC via spatie/laravel-permission  
 - **Testing**: PHPUnit  
 - **Authentication**: Laravel Breeze  
+- **Containerization**: Docker, Docker Compose  
 
 ## Installation
 1. Clone the repository:  
 ```bash
-git clone https://github.com/yourusername/hospital.git  
-cd hospital  
+git clone https://github.com/yourusername/hospital.git    
 ```
 
-2. Install dependencies: 
+2. Change directory: 
 ```bash
-composer install  
-npm install && npm run build  
+cd hospital  
 ```
 
 3. Set up the environment: 
@@ -57,7 +56,11 @@ docker-compose exec app php artisan key:generate
 ```bash
 http://localhost/  
 ```  
-
-#### email = admin@mail.com 
-#### password = password
-
+7. E-mail of superadmin:
+```bash
+admin@mail.com  
+```
+8. Password of superadmin:  
+```bash
+password  
+```
