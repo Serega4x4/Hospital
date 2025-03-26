@@ -3,9 +3,10 @@
     <main>
         <p>Wellcome to our Hospital</p>
         
-        @auth
-        <a href="{{ route('patient.index') }}" class="btn btn-sm btn-outline-secondary">Show doctors</a>
-        @endauth
+        @role('patient')
+        <a href="{{ route('patient.index') }}" class="btn btn-sm btn-outline-secondary">Doctors</a>
+        <a href="{{ route ('patient.create_appointment') }}" class="btn btn-sm btn-outline-secondary">Appointment</a>
+        @endrole
 
     </main>
 @endsection('content')
