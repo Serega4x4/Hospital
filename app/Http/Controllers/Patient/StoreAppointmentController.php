@@ -3,17 +3,27 @@
 namespace App\Http\Controllers\Patient;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use Illuminate\View\View;
+use App\Http\Requests\Patient\StoreRequest;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
+
 
 class StoreAppointmentController extends Controller
 {
-    public function __invoke(): View
+    public function __invoke(StoreRequest $request): RedirectResponse
     {
-        $doctors = User::role('doctor')
-            ->with('doctor')
-            ->get();
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
 
-        return view('patient.index', ['doctors' => $doctors]);
+        if (!auth()->user()->hasRole('patient')) {
+            return redirect()->route('dashboard');
+        }
+
+        $validatedData = $request->validated();
+
+        $validatedData['password'] = bcrypt($validatedData['password']);
+
+        return redirect()->route('patient.index')->with('success', 'Appointment created successfully!');
     }
 }

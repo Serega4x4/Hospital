@@ -1,10 +1,10 @@
 @extends('layouts.main')
 @section('content')
     <div>
-        <h1>Create Administrator</h1>
-        <form action="{{ route('admin.administrator.store') }}" method="POST">
+        <h1>Appointment to doctor</h1>
+        <form action="{{ route('patient.store_appointment') }}" method="POST">
             @csrf
-            <div>
+            {{-- <div>
                 <label for="first_name">First Name</label>
                 <input type="text" name="first_name" id="first_name" required>
             </div>
@@ -28,7 +28,7 @@
                 <label for="address">Address</label>
                 <input type="text" name="address" id="address">
             </div>
-            <button type="submit" class="btn btn-sm btn-outline-primary">Create Administrator</button>
+            <button type="submit" class="btn btn-sm btn-outline-primary">Create Administrator</button> --}}
         </form>
     </div>
 @endsection('content')
