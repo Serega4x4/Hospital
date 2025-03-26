@@ -61,4 +61,11 @@ Route::middleware('auth', 'role:superadmin|admin')
             });
     });
 
+Route::middleware('auth', 'role:patient')
+    ->prefix('patient')
+    ->namespace('App\Http\Controllers\Patient')
+    ->group(function(){
+        Route::get('/', 'IndexController')->name('patient.index');
+    });
+
 require __DIR__ . '/auth.php';
