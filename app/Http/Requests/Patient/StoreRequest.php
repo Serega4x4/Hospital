@@ -14,7 +14,8 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            
+            'doctor_id' => 'required|exists:doctors,id',
+            'start_time' => 'required|date|after:now',
         ];
     }
 }

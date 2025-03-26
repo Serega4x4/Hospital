@@ -65,8 +65,9 @@ Route::middleware('auth')->group(function () {
         ->namespace('App\Http\Controllers\Patient')
         ->group(function () {
             Route::get('/', 'IndexController')->name('patient.index');
-            Route::get('/appointment', 'CreateAppointmentController')->name('patient.create_appointment');
-            Route::post('/appointment', 'StoreAppointmentController')->name('patient.store_appointment');
+            Route::get('/create_appointment', 'CreateAppointmentController')->name('patient.create_appointment');
+            Route::post('/create_appointment', 'StoreAppointmentController')->name('patient.store_appointment');
+            Route::get('/show_appointment', 'ShowAppointmentController')->name('patient.show_appointment');
         });
 });
 

@@ -1,34 +1,36 @@
 @extends('layouts.main')
 @section('content')
-    <div>
-        <h1>Appointment to doctor</h1>
-        <form action="{{ route('patient.store_appointment') }}" method="POST">
-            @csrf
-            {{-- <div>
-                <label for="first_name">First Name</label>
-                <input type="text" name="first_name" id="first_name" required>
-            </div>
-            <div>
-                <label for="last_name">Last Name</label>
-                <input type="text" name="last_name" id="last_name" required>
-            </div>
-            <div>
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" required>
-            </div>
-            <div>
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" required>
-            </div>
-            <div>
-                <label for="pesel">PESEL</label>
-                <input type="text" name="pesel" id="pesel" required>
-            </div>
-            <div>
-                <label for="address">Address</label>
-                <input type="text" name="address" id="address">
-            </div>
-            <button type="submit" class="btn btn-sm btn-outline-primary">Create Administrator</button> --}}
-        </form>
-    </div>
-@endsection('content')
+
+    <h1>Appointment</h1>
+
+    @if (session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <form action="{{ route('patient.store_appointment') }}" method="POST">
+        @csrf
+        <div class="form-group">
+            <label for="doctor_id">Select a doctor:</label>
+            <select name="doctor_id" id="doctor_id" class="form-control" required>
+                @foreach ($doctors as $doctor)
+                    <option value="{{ $doctor->id }}">{{ $doctor->user->first_name }} {{ $doctor->user->last_name }} ({{ $doctor->speciality }})</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="start_time">Date and time:</label>
+            <input type="datetime-local" name="start_time" id="start_time" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Create Appointment</button>
+    </form>
+@endsection

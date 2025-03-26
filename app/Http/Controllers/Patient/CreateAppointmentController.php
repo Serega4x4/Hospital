@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Patient;
 
 use App\Http\Controllers\Controller;
+use App\Models\Doctor;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
@@ -19,6 +20,8 @@ class CreateAppointmentController extends Controller
             return redirect()->route('dashboard');
         }
 
-        return view('patient.create_appointment');
+        $doctors = Doctor::with('openingHours')->get();
+
+        return view('patient.create_appointment', ['doctors' => $doctors]);
     }
 }
