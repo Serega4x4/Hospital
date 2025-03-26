@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('content')
     <main>
-        <p>You're logged in!</p>
+        <p>Wellcome to our Hospital</p>
     </main>
 @endsection('content')

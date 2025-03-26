@@ -84,7 +84,6 @@
                                 </a>
                             </li>
                         @endrole
-
                     </ul>
 
                     <h6
@@ -98,7 +97,7 @@
                                 <line x1="12" y1="8" x2="12" y2="16"></line>
                                 <line x1="8" y1="12" x2="16" y2="12"></line>
                             </svg>
-                        </a>
+                            Make an appointment with a doctor</a>
                     </h6>
 
                     <ul class="nav flex-column mb-2">
@@ -121,7 +120,6 @@
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div
                     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Dashboard</h1>
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="btn-group me-2">
                             <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
