@@ -6,6 +6,7 @@
         @role('patient')
             <a href="{{ route('patient.index') }}" class="btn btn-sm btn-outline-secondary">Doctors</a>
             <a href="{{ route('patient.create_appointment') }}" class="btn btn-sm btn-outline-secondary">Appointment</a>
+            <a href="{{ route('patient.show_appointment') }}" class="btn btn-sm btn-outline-secondary">My Appointment</a>
         @endrole
 
     </main>

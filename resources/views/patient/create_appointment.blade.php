@@ -19,10 +19,10 @@
 
     <form action="{{ route('patient.store_appointment') }}" method="POST">
         @csrf
-        <div class="form-group mb-3">
-            <label for="doctor_id">Выберите врача:</label>
+        <div class="form-group mb-3" style="max-width: 400px;">
+            <label for="doctor_id">Choose a doctor:</label>
             <select name="doctor_id" id="doctor_id" class="form-control" required>
-                <option value="">-- Выберите врача --</option>
+                <option value="">-- Choose a doctor --</option>
                 @foreach ($doctors as $doctor)
                     <option value="{{ $doctor->id }}">{{ $doctor->user->first_name }} {{ $doctor->user->last_name }}
                         ({{ $doctor->speciality }})</option>
@@ -35,11 +35,11 @@
             <div class="input-group" style="max-width: 400px;">
                 <!-- Выбор даты -->
                 <select id="available_dates" class="form-control rounded-start-pill" style="border-right: none;" disabled>
-                    <option value="">Сначала выберите врача</option>
+                    <option value="">Select a doctor first</option>
                 </select>
                 <!-- Выбор времени -->
                 <select name="start_time" id="available_times" class="form-control rounded-end-pill" style="border-left: none;" disabled>
-                    <option value="">Сначала выберите дату</option>
+                    <option value="">First select a date</option>
                 </select>
             </div>
             <input type="hidden" name="start_time" id="hidden_start_time" required>
@@ -58,18 +58,17 @@
             const dateTimeDisplay = document.getElementById('selectedDateTime');
             let allSlots = [];
 
-            // Загрузка доступных слотов при выборе врача
             doctorSelect.addEventListener('change', function() {
                 const doctorId = this.value;
-                datesSelect.innerHTML = '<option value="">Загрузка...</option>';
-                timesSelect.innerHTML = '<option value="">Ожидание выбора даты...</option>';
+                datesSelect.innerHTML = '<option value="">Loading...</option>';
+                timesSelect.innerHTML = '<option value="">Waiting for date selection...</option>';
                 datesSelect.disabled = true;
                 timesSelect.disabled = true;
                 dateTimeDisplay.textContent = '';
 
                 if (!doctorId) {
-                    datesSelect.innerHTML = '<option value="">Сначала выберите врача</option>';
-                    timesSelect.innerHTML = '<option value="">Сначала выберите дату</option>';
+                    datesSelect.innerHTML = '<option value="">Select a doctor first</option>';
+                    timesSelect.innerHTML = '<option value="">First select a date</option>';
                     return;
                 }
 
@@ -84,70 +83,73 @@
                         allSlots = slots;
                         datesSelect.disabled = false;
                         if (slots.length === 0) {
-                            datesSelect.innerHTML = '<option value="">Нет доступных дат</option>';
-                            timesSelect.innerHTML = '<option value="">Нет доступного времени</option>';
+                            datesSelect.innerHTML = '<option value="">No dates available</option>';
+                            timesSelect.innerHTML = '<option value="">No time available</option>';
                         } else {
-                            // Уникальные даты
                             const uniqueDates = [...new Set(slots.map(slot => slot.date))];
-                            datesSelect.innerHTML = '<option value="">Выберите дату</option>';
+                            datesSelect.innerHTML = '<option value="">Select date</option>';
                             uniqueDates.forEach(date => {
                                 const option = document.createElement('option');
                                 option.value = date;
-                                option.text = new Date(date).toLocaleDateString();
+                                const formattedDate = new Date(date).toLocaleDateString('ru-RU', {
+                                    day: '2-digit',
+                                    month: '2-digit',
+                                    year: 'numeric'
+                                });
+                                option.text = formattedDate; // dd.MM.yyyy
                                 datesSelect.appendChild(option);
                             });
                         }
                     })
                     .catch(error => {
                         console.error('Error fetching available slots:', error);
-                        datesSelect.innerHTML = '<option value="">Ошибка загрузки дат</option>';
-                        timesSelect.innerHTML = '<option value="">Ошибка загрузки времени</option>';
+                        datesSelect.innerHTML = '<option value="">Error loading dates</option>';
+                        timesSelect.innerHTML = '<option value="">Time loading error</option>';
                     });
             });
 
-            // Обновление времени при выборе даты
             datesSelect.addEventListener('change', function() {
                 const selectedDate = this.value;
-                timesSelect.innerHTML = '<option value="">Загрузка...</option>';
+                timesSelect.innerHTML = '<option value="">Loading...</option>';
                 timesSelect.disabled = false;
                 dateTimeDisplay.textContent = '';
                 hiddenStartTime.value = '';
 
                 if (!selectedDate) {
-                    timesSelect.innerHTML = '<option value="">Сначала выберите дату</option>';
+                    timesSelect.innerHTML = '<option value="">First select a date</option>';
                     timesSelect.disabled = true;
                     return;
                 }
 
                 const availableTimes = allSlots.filter(slot => slot.date === selectedDate);
                 if (availableTimes.length === 0) {
-                    timesSelect.innerHTML = '<option value="">Нет доступного времени</option>';
+                    timesSelect.innerHTML = '<option value="">No time available</option>';
                 } else {
-                    timesSelect.innerHTML = '<option value="">Выберите время</option>';
+                    timesSelect.innerHTML = '<option value="">Select time</option>';
                     availableTimes.forEach(slot => {
                         const option = document.createElement('option');
                         option.value = slot.datetime;
-                        option.text = slot.time;
+                        option.text = slot.time; // Already in hh:mm format from the service
                         timesSelect.appendChild(option);
                     });
                 }
             });
 
-            // Обновление отображения и скрытого поля при выборе времени
             timesSelect.addEventListener('change', function() {
                 if (this.value) {
                     hiddenStartTime.value = this.value;
-                    dateTimeDisplay.textContent = `Выбрано: ${new Date(this.value).toLocaleString()}`;
+                    const date = datesSelect.options[datesSelect.selectedIndex].text;
+                    const time = this.options[this.selectedIndex].text;
+                    dateTimeDisplay.textContent = `Selected: ${date} ${time}`;
                 } else {
                     hiddenStartTime.value = '';
                     dateTimeDisplay.textContent = '';
                 }
             });
 
-            // Инициализация при загрузке страницы
             if (!doctorSelect.value) {
-                datesSelect.innerHTML = '<option value="">Сначала выберите врача</option>';
-                timesSelect.innerHTML = '<option value="">Сначала выберите дату</option>';
+                datesSelect.innerHTML = '<option value="">Select a doctor first</option>';
+                timesSelect.innerHTML = '<option value="">First select a date</option>';
             }
         });
     </script>
