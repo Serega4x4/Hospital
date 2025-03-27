@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\Patient;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Patient\StoreRequest;
 use App\Models\Appointment;
 use App\Models\Doctor;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 
-class StoreAppointmentController extends Controller
+class StoreAppointmentController extends BaseController
 {
     public function __invoke(StoreRequest $request): RedirectResponse
     {
@@ -63,14 +62,13 @@ class StoreAppointmentController extends Controller
         $time = $startTime->format('H:i');
         $isWithinHours = false;
 
-        // We check both ranges (morning and afternoon)
         foreach ($workingHours as $range) {
             if ($range === null) {
-                continue; // Skip null (weekends)
+                continue;
             }
 
             [$open, $close] = explode('-', $range);
-            if ($time >= $open && $time < $close) { // Consider that the end of the range is not included
+            if ($time >= $open && $time < $close) {
                 $isWithinHours = true;
                 break;
             }
@@ -82,7 +80,6 @@ class StoreAppointmentController extends Controller
                 ->withErrors(['start_time' => 'The doctor is not available at this time.'])
                 ->withInput();
         }
-
 
         $patient = Auth::user()->patient;
         Appointment::create([

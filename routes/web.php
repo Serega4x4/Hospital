@@ -67,6 +67,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/', 'IndexController')->name('patient.index');
             Route::get('/create_appointment', 'CreateAppointmentController')->name('patient.create_appointment');
             Route::post('/create_appointment', 'StoreAppointmentController')->name('patient.store_appointment');
+            Route::get('/doctor/{doctor}/available-slots', 'AvailableSlotsController')->name('patient.available-slots');
             Route::get('/show_appointment', 'ShowAppointmentController')->name('patient.show_appointment');
         });
 });
