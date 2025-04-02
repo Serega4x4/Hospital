@@ -33,11 +33,11 @@
         <div class="form-group mb-3">
             <label>Выберите дату и время:</label>
             <div class="input-group" style="max-width: 400px;">
-                <!-- Выбор даты -->
+                <!-- Date selection -->
                 <select id="available_dates" class="form-control rounded-start-pill" style="border-right: none;" disabled>
                     <option value="">Select a doctor first</option>
                 </select>
-                <!-- Выбор времени -->
+                <!-- Time selection -->
                 <select name="start_time" id="available_times" class="form-control rounded-end-pill" style="border-left: none;" disabled>
                     <option value="">First select a date</option>
                 </select>
